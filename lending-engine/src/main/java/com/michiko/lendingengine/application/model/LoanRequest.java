@@ -1,9 +1,6 @@
 package com.michiko.lendingengine.application.model;
 
-import java.time.Duration;
 import java.util.Objects;
-
-import com.michiko.lendingengine.domain.model.User;
 
 public class LoanRequest {
 

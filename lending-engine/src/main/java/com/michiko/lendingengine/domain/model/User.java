@@ -4,8 +4,10 @@ import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "Users") // "User" is keyword which cannot be used as table name
 public final class User {
 
 	@Id
@@ -16,6 +18,7 @@ public final class User {
 	private String occupation;
 	
 	public User() {
+		
 	}
 
 	public User(long id, String firstName, String lastName, int age, String occupation) {
@@ -54,8 +57,16 @@ public final class User {
 		return age;
 	}
 
+	public void setAge(int age) {
+		this.age = age;
+	}
+
 	public String getOccupation() {
 		return occupation;
+	}
+
+	public void setOccupation(String occupation) {
+		this.occupation = occupation;
 	}
 
 	@Override
