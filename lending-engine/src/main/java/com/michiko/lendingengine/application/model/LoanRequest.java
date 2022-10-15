@@ -5,24 +5,18 @@ import java.util.Objects;
 public class LoanRequest {
 
 	private final int amount;
-	private final long borrowerId;
 	private final int daysToRepay;
 	private final double interestRate;
 	
-	public LoanRequest(int amount, long borrowerId, int daysToRepay, double interestRate) {
+	public LoanRequest(int amount, int daysToRepay, double interestRate) {
 		super();
 		this.amount = amount;
-		this.borrowerId = borrowerId;
 		this.daysToRepay = daysToRepay;
 		this.interestRate = interestRate;
 	}
 
 	public int getAmount() {
 		return amount;
-	}
-
-	public long getBorrowerId() {
-		return borrowerId;
 	}
 
 	public int getDaysToRepay() {
@@ -35,7 +29,7 @@ public class LoanRequest {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(amount, borrowerId, daysToRepay, interestRate);
+		return Objects.hash(amount, daysToRepay, interestRate);
 	}
 
 	@Override
@@ -47,13 +41,13 @@ public class LoanRequest {
 		if (getClass() != obj.getClass())
 			return false;
 		LoanRequest other = (LoanRequest) obj;
-		return amount == other.amount && borrowerId == other.borrowerId && daysToRepay == other.daysToRepay
+		return amount == other.amount && daysToRepay == other.daysToRepay
 				&& Double.doubleToLongBits(interestRate) == Double.doubleToLongBits(other.interestRate);
 	}
 
 	@Override
 	public String toString() {
-		return "LoanRequest [amount=" + amount + ", borrowerId=" + borrowerId + ", daysToRepay=" + daysToRepay
+		return "LoanRequest [amount=" + amount + ", daysToRepay=" + daysToRepay
 				+ ", interestRate=" + interestRate + "]";
 	}
 	

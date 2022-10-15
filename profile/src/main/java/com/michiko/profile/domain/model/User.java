@@ -1,5 +1,6 @@
-package com.michiko.lendingengine.domain.model;
+package com.michiko.profile.domain.model;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -7,26 +8,30 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Users") // "User" is keyword which cannot be used as table name
-public final class User {
-
+@Table(name = "Users")
+public class User {
+	
 	@Id
 	private String username;
 	private String firstName;
 	private String lastName;
 	private int age;
 	private String occupation;
+	private LocalDate registeredSince;
 	
 	public User() {
 		
 	}
-
-	public User(String username, String firstName, String lastName, int age, String occupation) {
+	
+	public User(String username, String firstName, String lastName, int age, String occupation,
+			LocalDate registeredSince) {
+		super();
 		this.username = username;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.age = age;
 		this.occupation = occupation;
+		this.registeredSince = registeredSince;
 	}
 
 	public String getUsername() {
@@ -69,9 +74,17 @@ public final class User {
 		this.occupation = occupation;
 	}
 
+	public LocalDate getRegisteredSince() {
+		return registeredSince;
+	}
+
+	public void setRegisteredSince(LocalDate registeredSince) {
+		this.registeredSince = registeredSince;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(age, firstName, lastName, occupation, username);
+		return Objects.hash(age, firstName, lastName, occupation, registeredSince, username);
 	}
 
 	@Override
@@ -85,15 +98,15 @@ public final class User {
 		User other = (User) obj;
 		return age == other.age && Objects.equals(firstName, other.firstName)
 				&& Objects.equals(lastName, other.lastName) && Objects.equals(occupation, other.occupation)
-				&& Objects.equals(username, other.username);
+				&& Objects.equals(registeredSince, other.registeredSince) && Objects.equals(username, other.username);
 	}
 
 	@Override
 	public String toString() {
 		return "User [username=" + username + ", firstName=" + firstName + ", lastName=" + lastName + ", age=" + age
-				+ ", occupation=" + occupation + "]";
+				+ ", occupation=" + occupation + ", registeredSince=" + registeredSince + "]";
 	}
-
-
 	
+	
+
 }

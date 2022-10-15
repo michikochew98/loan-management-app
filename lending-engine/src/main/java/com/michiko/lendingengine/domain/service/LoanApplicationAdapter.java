@@ -22,14 +22,14 @@ public class LoanApplicationAdapter {
 		this.userRepository = userRepository;
 	}
 	
-	public LoanApplication transform(LoanRequest req) {
-		Optional<User> userOptional = userRepository.findById(req.getBorrowerId());
+	public LoanApplication transform(LoanRequest req, User borrower) {
+		Optional<User> userOptional = userRepository.findById(borrower.getUsername());
 		
 		if(userOptional.isPresent()) {
 			return new LoanApplication(req.getAmount(), userOptional.get(), 
 					req.getDaysToRepay(), req.getInterestRate());
 		} else {
-			throw new UserNotFoundException(req.getBorrowerId());
+			throw new UserNotFoundException(borrower.getUsername());
 		}
 		
 	}

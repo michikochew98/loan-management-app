@@ -2,8 +2,10 @@ package com.michiko.securityapp.user.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "Users")
 public class User {
 
 	@Id
@@ -11,11 +13,9 @@ public class User {
 	private String password;
 	
 	public User() {
-		super();
 	}
 
 	public User(String username, String password) {
-		super();
 		this.username = username;
 		this.password = password;
 	}
