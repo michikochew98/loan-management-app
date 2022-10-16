@@ -5,6 +5,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.michiko.lendingengine.domain.model.Balance;
+import com.michiko.lendingengine.domain.model.Currency;
+import com.michiko.lendingengine.domain.model.Money;
 import com.michiko.lendingengine.domain.model.User;
 import com.michiko.lendingengine.domain.repository.UserRepository;
 
@@ -21,10 +24,14 @@ public class LendingEngineApplication implements CommandLineRunner {
 	
 	@Override
 	public void run(String... args) throws Exception {
-		userRepository.save(new User("John", "John", "Wicks", 32, "Solution Architect"));
-		userRepository.save(new User("Jolly", "Jolly", "Niana", 24, "Software Developer"));
-		userRepository.save(new User("Nancy", "Nancy", "Woo", 21, "IT student"));
-		userRepository.save(new User("Jaqueline", "Jaqueline", "Paula", 45, "System Analyst"));
+		User johnUser = userRepository.save(new User("John", "John", "Wicks", 32, "Solution Architect", new Balance()));
+		User jollyUser = userRepository.save(new User("Jolly", "Jolly", "Niana", 24, "Software Developer", new Balance()));
+		johnUser.topUp(new Money(Currency.USD, 100));
+		jollyUser.topUp(new Money(Currency.USD, 100));
+		userRepository.save(johnUser);
+		userRepository.save(jollyUser);
+		userRepository.save(new User("Nancy", "Nancy", "Woo", 21, "IT student", new Balance()));
+		userRepository.save(new User("Jaqueline", "Jaqueline", "Paula", 45, "System Analyst", new Balance()));
 	}
  
 }

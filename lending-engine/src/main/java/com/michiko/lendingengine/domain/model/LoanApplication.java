@@ -19,6 +19,7 @@ public class LoanApplication {
 	private User borrower;
 	private int repaymentTermInDays;
 	private double interestRate;
+	private Status status;
 	
 	public LoanApplication() {
 		
@@ -29,42 +30,34 @@ public class LoanApplication {
 		this.borrower = borrower;
 		this.repaymentTermInDays = repaymentTermInDays;
 		this.interestRate = interestRate;
+		this.status = Status.ONGOING;
 	}	
+	
+	public Loan acceptLoanApplication(final User lender) {
+		lender.withdraw(getAmount());
+		borrower.topUp(getAmount());
+		status = Status.COMPLETED;
+		return new Loan(lender, this);
+	}
 
 	public long getId() {
 		return id;
 	}
 
-	public int getAmount() {
-		return amount;
-	}
-
-	public void setAmount(int amount) {
-		this.amount = amount;
+	public Money getAmount() {
+		return new Money(Currency.USD, amount);
 	}
 
 	public User getBorrower() {
 		return borrower;
 	}
 
-	public void setBorrower(User borrower) {
-		this.borrower = borrower;
-	}
-
 	public int getRepaymentTermInDays() {
 		return repaymentTermInDays;
 	}
 
-	public void setRepaymentTermInDays(int repaymentTermInDays) {
-		this.repaymentTermInDays = repaymentTermInDays;
-	}
-
 	public double getInterestRate() {
 		return interestRate;
-	}
-
-	public void setInterestRate(double interestRate) {
-		this.interestRate = interestRate;
 	}
 
 	@Override

@@ -18,6 +18,10 @@
 	</properties>
 	<dependencies>
 		<dependency>
+	      <groupId>org.springframework.boot</groupId>
+	      <artifactId>spring-boot-starter-amqp</artifactId>
+	    </dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
@@ -36,10 +40,20 @@
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
+		  <groupId>com.google.code.gson</groupId>
+		  <artifactId>gson</artifactId>
+		  <version>2.9.1</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+	      <groupId>org.springframework.amqp</groupId>
+	      <artifactId>spring-rabbit-test</artifactId>
+	      <scope>test</scope>
+	    </dependency>
 	</dependencies>
 
 	<build>

@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.google.gson.Gson;
-import com.michiko.securityapp.user.model.User;
+import com.michiko.securityapp.user.dto.UserDTO;
 
 @Component
 public class NotificationService {
@@ -18,8 +18,9 @@ public class NotificationService {
 		this.rabbitTemplate = rabbitTemplate;
 	}
 	
-	public void sendMessage(User user) {
+	public void sendMessage(UserDTO userDTO) {
+		userDTO.setPassword(null);
 		rabbitTemplate.convertAndSend("userRegisteredTopic", "user.registered",
-				GSON.toJson(user));
+			GSON.toJson(userDTO));
 	}
 }

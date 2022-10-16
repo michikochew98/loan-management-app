@@ -12,8 +12,8 @@ import com.rabbitmq.client.ConnectionFactory;
 @Configuration
 public class MessagingConfig {
 
-	private static final String TOPIC = "userRegisteredTopic";
-	private static final String QUEUE_NAME = "user.registered";
+	//private static final String TOPIC = "userRegisteredTopic";
+	//private static final String QUEUE_NAME = "user.registered";
 	
 	/**
 	 *  SpringBoot AMQP Setup
@@ -27,7 +27,7 @@ public class MessagingConfig {
 
 	
 	//
-	@Bean
+	/*@Bean
 	public Queue userRegisteredQueue() {
 		return new Queue(QUEUE_NAME, false);
 	}
@@ -46,5 +46,5 @@ public class MessagingConfig {
 	@Bean
 	public Binding binding(Queue queue, TopicExchange topicExchange) {
 		return BindingBuilder.bind(queue).to(topicExchange).with("user.#");
-	}
+	}*/
 }

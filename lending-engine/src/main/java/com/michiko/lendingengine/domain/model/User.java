@@ -2,8 +2,10 @@ package com.michiko.lendingengine.domain.model;
 
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,17 +18,20 @@ public final class User {
 	private String lastName;
 	private int age;
 	private String occupation;
+	@OneToOne(cascade = CascadeType.ALL)
+	private Balance balance;
 	
 	public User() {
 		
 	}
 
-	public User(String username, String firstName, String lastName, int age, String occupation) {
+	public User(String username, String firstName, String lastName, int age, String occupation, Balance balance) {
 		this.username = username;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.age = age;
 		this.occupation = occupation;
+		this.balance = balance;
 	}
 
 	public String getUsername() {
@@ -67,6 +72,22 @@ public final class User {
 
 	public void setOccupation(String occupation) {
 		this.occupation = occupation;
+	}
+
+	public void topUp(final Money money) {
+		balance.topUp(money);
+	}
+	
+	public void withdraw(final Money money) {
+		balance.withdraw(money);
+	}
+
+	public Balance getBalance() {
+		return balance;
+	}
+
+	public void setBalance(Balance balance) {
+		this.balance = balance;
 	}
 
 	@Override
