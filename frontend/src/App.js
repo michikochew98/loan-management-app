@@ -1,15 +1,46 @@
-import Navbar from "./component/navbar/Navbar";
-import Sidebar from "./component/sidebar/Sidebar";
-import "./App.css";
-import Home from "./pages/home/Home";
+import './App.css';
+import Navbar from './component/navbar/Navbar';
+import Sidebar from './component/sidebar/Sidebar';
+import Home from './pages/home/Home';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import UserList from './pages/userList/UserList';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+    // children: [
+    //   {
+    //     path: "users",
+    //     element: <UserList />,
+    //   },
+    // ],
+  },
+  {
+    path: "/users",
+    element: <UserList />,
+    // children: [
+    //   {
+    //     path: "users",
+    //     element: <UserList />,
+    //   },
+    // ],
+  },
+]);
 
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
       <Navbar />
-      <div className="container">
+      <div className='container'>
         <Sidebar />
-        <Home />
+        <RouterProvider
+          router={router}
+          //fallbackElement={<BigSpinner />}
+        />
       </div>
     </div>
   );

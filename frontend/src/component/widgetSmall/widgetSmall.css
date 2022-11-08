@@ -6,3 +6,56 @@
     padding: 20px;
     margin-right: 20px;
 }
+
+.widgetSmallTitle{
+    font-weight: 600 !important;
+}
+
+.widgetSmallImg{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.widgetSmallListItem{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.widgetSmallList{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.widgetSmallUser{
+    display: flex;
+    flex-direction: column;
+}
+
+.widgetSmallUsername{
+    font-weight: 600;
+}
+
+.widgetSmallTitle{
+    font-weight: 300;
+}
+
+.widgetSmallButton{
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 10px;
+    padding: 7px 10px;
+    background-color: whitesmoke;
+    color: grey;
+    cursor: pointer;
+}
+
+.widgetSmallIcon{
+    font-size: 16px;
+    margin-right: 5px;
+}
